@@ -3,398 +3,484 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daydream Pharmacy | Drug Access in Ontario</title>
+    <title>Daydream Pharmacy | Drug Access & Healthcare in Ontario</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for custom typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
 </head>
 <body class="light-mode">
 
     <!-- Top Navigation & Controls -->
-    <header>
-        <div class="header-top">
-            <div class="logo">
-                <span class="logo-icon">💊</span>
-                <h1>Daydream Pharmacy</h1>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand">
+                <div class="brand-badge">💊</div>
+                <div class="brand-text">
+                    <h1>Daydream Pharmacy</h1>
+                    <span class="brand-subtitle" data-en="Ontario Healthcare Project" data-fr="Projet de santé en Ontario">Ontario Healthcare Project</span>
+                </div>
             </div>
-            <div class="controls">
-                <button id="lang-toggle" onclick="toggleLanguage()" aria-label="Switch Language">
-                    🇫🇷 Français
+            
+            <div class="header-actions">
+                <button id="lang-toggle" class="action-btn" onclick="toggleLanguage()" aria-label="Switch Language">
+                    <span class="flag">🇫🇷</span> <span class="btn-text">Français</span>
                 </button>
-                <button id="theme-toggle" onclick="toggleTheme()" aria-label="Switch Theme">
-                    🌙 Dark Mode
+                <button id="theme-toggle" class="action-btn" onclick="toggleTheme()" aria-label="Switch Theme">
+                    <span class="icon">🌙</span> <span class="btn-text">Dark</span>
                 </button>
             </div>
         </div>
 
-        <nav class="tabs">
-            <button class="tab-btn active" onclick="openTab('home')" data-en="Home" data-fr="Accueil">Home</button>
-            <button class="tab-btn" onclick="openTab('drugs')" data-en="Common Drugs" data-fr="Médicaments Courants">Common Drugs</button>
-            <button class="tab-btn" onclick="openTab('sources')" data-en="Sources & Observations" data-fr="Sources et Observations">Sources & Observations</button>
+        <nav class="nav-tabs" role="tablist">
+            <button class="tab-btn active" role="tab" onclick="openTab('home')" data-en="Home & Essay" data-fr="Accueil et Essai">
+                <span class="tab-icon">🏠</span> Home & Essay
+            </button>
+            <button class="tab-btn" role="tab" onclick="openTab('drugs')" data-en="Common Drugs" data-fr="Médicaments">
+                <span class="tab-icon">💊</span> Common Drugs
+            </button>
+            <button class="tab-btn" role="tab" onclick="openTab('sources')" data-en="Sources & Observations" data-fr="Sources et Observations">
+                <span class="tab-icon">📚</span> Sources & Observations
+            </button>
         </nav>
     </header>
 
-    <main>
+    <main class="site-main">
         <!-- ================= HOME TAB ================= -->
-        <section id="home" class="tab-content active">
-            <div class="hero-card">
-                <h2 data-en="Why Are Medicines So Hard to Afford in Canada?" 
-                    data-fr="Pourquoi les médicaments coûtent-ils si cher au Canada ?">
-                    Why Are Medicines So Hard to Afford in Canada?
-                </h2>
-                <p class="subtitle" 
-                   data-en="Hover over any dotted word to see what it means!" 
-                   data-fr="Passe ta souris sur un mot souligné pour voir ce qu'il veut dire !">
-                   Hover over any dotted word to see what it means!
-                </p>
+        <section id="home" class="tab-pane active" role="tabpanel">
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <span class="hero-tag" data-en="Independent Research Project" data-fr="Projet de recherche indépendant">Independent Research Project</span>
+                    <h2 data-en="Navigating Prescription Drug Access & Costs in Ontario" 
+                        data-fr="L'accès et les coûts des médicaments sur ordonnance en Ontario">
+                        Navigating Prescription Drug Access & Costs in Ontario
+                    </h2>
+                    <p data-en="Explore how public programs, private insurance, and soaring costs impact everyday patients at the pharmacy counter. Hover over any dotted term for a plain-language explanation." 
+                       data-fr="Découvrez comment les programmes publics, les assurances privées et les coûts élevés touchent les patients à la pharmacie. Passez la souris sur les mots pointillés pour voir les explications.">
+                        Explore how public programs, private insurance, and soaring costs impact everyday patients at the pharmacy counter. Hover over any dotted term for a plain-language explanation.
+                    </p>
+                </div>
             </div>
 
-            <!-- Section 1: The Problem -->
-            <div class="card">
-                <h3 data-en="1. How Drug Coverage Works (And Where It Fails)" 
-                    data-fr="1. Comment fonctionne l'assurance-médicaments ?">
-                    1. How Drug Coverage Works (And Where It Fails)
+            <!-- Section 1 -->
+            <div class="content-card">
+                <div class="card-header-tag">01 / The Foundation</div>
+                <h3 data-en="How Drug Coverage Works (And Where It Fails)" 
+                    data-fr="Comment fonctionne l'assurance-médicaments ?">
+                    How Drug Coverage Works (And Where It Fails)
                 </h3>
                 
                 <div class="lang-en">
-                    <p>In Canada, our public health system (like <span class="tooltip" data-tip="Ontario Health Insurance Plan: The government health card that pays for doctor and hospital visits.">OHIP</span>) pays for doctor and hospital visits, but it does not automatically pay for prescription pills for everyone. Instead, people use two types of <span class="tooltip" data-tip="Plans that help pay for part or all of the cost of your prescription medicine.">drug plans</span>:</p>
-                    <ul>
-                        <li><strong>Private Plans:</strong> Usually given by a job to workers and their families.</li>
-                        <li><strong>Public Plans:</strong> Paid by the government for specific groups, like seniors or people with low incomes.</li>
-                    </ul>
-                    <p>The big problem is that many people do not have enough coverage—or have none at all. According to a Heart & Stroke and Canadian Cancer Society survey:</p>
-                    <div class="stat-grid">
-                        <div class="stat-box"><strong>1 in 4</strong><span>Canadians skip doses, split pills, or don't pick up meds because of cost.</span></div>
-                        <div class="stat-box"><strong>16%</strong><span>Do not have enough insurance coverage for their medicines.</span></div>
-                        <div class="stat-box"><strong>27%</strong><span>Find it hard to pay for their prescriptions.</span></div>
-                        <div class="stat-box"><strong>1 Million+</strong><span>People in Ontario alone cannot get the medicine they need.</span></div>
+                    <p>In Canada, our public health system (like <span class="tooltip" data-tip="Ontario Health Insurance Plan: The government health card that pays for doctor and hospital visits.">OHIP</span>) pays for doctor and hospital visits, but it does not automatically pay for prescription pills for everyone. Instead, people rely on two main types of <span class="tooltip" data-tip="Plans that help pay for part or all of the cost of your prescription medicine.">drug plans</span>:</p>
+                    <div class="feature-split">
+                        <div class="split-box">
+                            <h4>Private Plans</h4>
+                            <p>Usually provided by an employer for workers and their families as a workplace benefit.</p>
+                        </div>
+                        <div class="split-box">
+                            <h4>Public Plans</h4>
+                            <p>Funded by the government for targeted groups, such as low-income individuals or seniors.</p>
+                        </div>
+                    </div>
+                    <p>Despite these options, coverage gaps leave millions vulnerable. According to a joint poll by Heart & Stroke and the Canadian Cancer Society:</p>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <span class="metric-number">1 in 4</span>
+                            <span class="metric-label">Canadians skip doses, split pills, or skip pickups due to high costs.</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-number">16%</span>
+                            <span class="metric-label">Lack adequate insurance coverage for prescription medications.</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-number">27%</span>
+                            <span class="metric-label">Report severe difficulty paying for their monthly prescriptions.</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-number">1M+</span>
+                            <span class="metric-label">People in Ontario alone who lack access to necessary medications.</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="lang-fr hidden">
                     <p>Au Canada, le système de santé public (comme <span class="tooltip" data-tip="Assurance-santé de l'Ontario : La carte qui paie pour voir le médecin ou aller à l'hôpital.">OHIP</span>) paie les visites chez le médecin et à l'hôpital. Mais il ne paie pas les médicaments pour tout le monde. Il existe deux types de <span class="tooltip" data-tip="Des programmes qui paient une partie ou tout le prix des médicaments.">régimes d'assurance</span> :</p>
-                    <ul>
-                        <li><strong>Les régimes privés :</strong> Souvent donnés par un employeur au travail pour l'employé et sa famille.</li>
-                        <li><strong>Les régimes publics :</strong> Payés par le gouvernement pour certains groupes, comme les personnes âgées ou les gens qui gagnent peu d'argent.</li>
-                    </ul>
-                    <p>Le problème, c'est que beaucoup de gens n'ont pas assez d'assurance ou pas d'assurance du tout. D'après un sondage de Cœur + AVC et la Société canadienne du cancer :</p>
-                    <div class="stat-grid">
-                        <div class="stat-box"><strong>1 sur 4</strong><span>Canadiens sautent des doses ou coupent leurs pilules car c'est trop cher.</span></div>
-                        <div class="stat-box"><strong>16 %</strong><span>N'ont pas assez d'assurance pour payer leurs médicaments.</span></div>
-                        <div class="stat-box"><strong>27 %</strong><span>Trouvent difficile de payer le prix de leurs prescriptions.</span></div>
-                        <div class="stat-box"><strong>1 Million+</strong><span>Personnes en Ontario n'ont pas accès aux médicaments dont elles ont besoin.</span></div>
+                    <div class="feature-split">
+                        <div class="split-box">
+                            <h4>Régimes privés</h4>
+                            <p>Souvent offerts par un employeur pour l'employé et sa famille au travail.</p>
+                        </div>
+                        <div class="split-box">
+                            <h4>Régimes publics</h4>
+                            <p>Payés par le gouvernement pour des groupes précis, comme les personnes âgées ou à faible revenu.</p>
+                        </div>
+                    </div>
+                    <p>Malgré cela, beaucoup de gens n'ont pas assez d'assurance. D'après un sondage de Cœur + AVC et la Société canadienne du cancer :</p>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <span class="metric-number">1 sur 4</span>
+                            <span class="metric-label">Canadiens sautent des doses ou coupent leurs pilules car c'est trop cher.</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-number">16 %</span>
+                            <span class="metric-label">N'ont pas assez d'assurance pour payer leurs médicaments.</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-number">27 %</span>
+                            <span class="metric-label">Trouvent difficile de payer le prix de leurs prescriptions.</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-number">1 Million+</span>
+                            <span class="metric-label">Personnes en Ontario n'ont pas accès aux médicaments dont elles ont besoin.</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Section 2: High Costs & Shortages -->
-            <div class="card">
-                <h3 data-en="2. High Prices & Medicine Shortages" 
-                    data-fr="2. Les prix élevés et le manque de médicaments">
-                    2. High Prices & Medicine Shortages
+            <!-- Section 2 -->
+            <div class="content-card">
+                <div class="card-header-tag">02 / Economic & Supply Pressures</div>
+                <h3 data-en="High Prices & National Medicine Shortages" 
+                    data-fr="Prix élevés et pénuries de médicaments">
+                    High Prices & National Medicine Shortages
                 </h3>
 
                 <div class="lang-en">
-                    <p>Even with private insurance or government help like <span class="tooltip" data-tip="Ontario Drug Benefit: A government program that helps seniors and people on social assistance pay for drugs.">ODB</span>, some drugs like <strong>Ozempic</strong> or <strong>Wegovy</strong> can still cost hundreds of dollars—even with discount cards. Plus, most patients still have to pay a <span class="tooltip" data-tip="A small fee you must pay each time you pick up a prescription, even when insurance covers the rest.">co-payment</span> of about <strong>$4.11</strong> per medicine. Very few people get drugs completely free, usually only if they have two insurance plans (like their own and their partner's).</p>
-                    <p>Canada also faces frequent <span class="tooltip" data-tip="When pharmacies run out of a medicine because factories have delays or too many people need it.">drug shortages</span> because factories have delays, run out of ingredients, or too many people need the medicine at once. Recently, drugs like <strong>rabeprazole</strong> and <strong>pantoprazole magnesium</strong> have been out of stock, forcing doctors to switch prescriptions or ask patients to wait.</p>
+                    <p>Even with private coverage or government programs like <span class="tooltip" data-tip="Ontario Drug Benefit: A government program that helps seniors and vulnerable groups pay for drugs.">ODB</span>, medications like <strong>Ozempic</strong> or <strong>Wegovy</strong> can still carry hundreds of dollars in out-of-pocket costs—even when manufacturer discount cards are applied. Furthermore, almost all patients must pay a <span class="tooltip" data-tip="A small fee you must pay each time you pick up a prescription, even when insurance covers the rest.">co-payment</span> of approximately <strong>$4.11</strong> per prescription. Completely free medications are exceptionally rare, usually requiring dual insurance coverage (such as a primary plan combined with a spouse's plan).</p>
+                    <p>In addition to cost, supply chain vulnerability creates frequent <span class="tooltip" data-tip="When pharmacies run out of a medicine because factories have delays or too many people need it.">drug shortages</span> across Canada due to manufacturing delays, ingredient scarcity, or surges in demand. Recently, medications such as <strong>rabeprazole</strong> and <strong>pantoprazole magnesium</strong> have faced severe stockouts, requiring physicians to rewrite prescriptions or forcing patients to wait if care isn't immediately urgent.</p>
                 </div>
 
                 <div class="lang-fr hidden">
-                    <p>Même avec une assurance privée ou un programme comme <span class="tooltip" data-tip="Programme de médicaments de l'Ontario : Aide du gouvernement pour les personnes âgées et les gens à faible revenu.">ODB</span>, certains médicaments comme <strong>Ozempic</strong> ou <strong>Wegovy</strong> coûtent encore des centaines de dollars, même avec une carte rabais. En plus, presque tout le monde doit payer un petit frais (<span class="tooltip" data-tip="Le petit montant que le patient doit payer lui-même à la pharmacie.">copaiement</span>) d'environ <strong>4,11 $</strong> par médicament. C'est très rare d'avoir des médicaments gratuits, sauf si une personne a deux assurances (la sienne et celle de son partenaire).</p>
-                    <p>Souvent, il manque des médicaments (<span class="tooltip" data-tip="Quand il n'y a plus de médicaments disponibles à la pharmacie.">pénuries</span>) au Canada parce que les usines ont du retard ou manquent d'ingrédients. Récemment, il a manqué de <strong>rabeprazole</strong> et de <strong>pantoprazole magnésium</strong>. Les médecins doivent alors changer la prescription ou demander au patient d'attendre.</p>
+                    <p>Même avec une assurance privée ou un programme comme <span class="tooltip" data-tip="Programme de médicaments de l'Ontario : Aide du gouvernement pour les personnes âgées et les gens à faible revenu.">ODB</span>, certains médicaments comme <strong>Ozempic</strong> ou <strong>Wegovy</strong> coûtent encore des centaines de dollars, même avec une carte rabais. Presque tout le monde doit payer un petit frais (<span class="tooltip" data-tip="Le petit montant que le patient doit payer lui-même à la pharmacie.">copaiement</span>) d'environ <strong>4,11 $</strong> par médicament. Avoir des médicaments gratuits est très rare (souvent seulement avec deux assurances).</p>
+                    <p>Il manque aussi souvent des médicaments (<span class="tooltip" data-tip="Quand il n'y a plus de médicaments disponibles à la pharmacie.">pénuries</span>) au Canada à cause des usines en retard. Récemment, il a manqué de <strong>rabeprazole</strong> et de <strong>pantoprazole magnésium</strong>, obligeant les médecins à changer les prescriptions.</p>
                 </div>
             </div>
 
-            <!-- Section 3: Who Is Hurt Most? -->
-            <div class="card">
-                <h3 data-en="3. Who Gets Hurt the Most?" 
-                    data-fr="3. Qui souffre le plus de ce problème ?">
-                    3. Who Gets Hurt the Most?
+            <!-- Section 3 -->
+            <div class="content-card">
+                <div class="card-header-tag">03 / Human Impact</div>
+                <h3 data-en="Who Bears the Greatest Burden?" 
+                    data-fr="Qui souffre le plus de ce problème ?">
+                    Who Bears the Greatest Burden?
                 </h3>
 
                 <div class="lang-en">
-                    <p>This problem hits <strong>seniors</strong>, <strong>part-time or minimum-wage workers</strong> without job benefits, and <strong>low-income families</strong> the hardest. When people skip doses or wait too long, their health gets worse. Heart & Stroke found that <strong>more than 1 in 4 people (28%)</strong> had to make tough choices to pay for medicine—like buying less food, paying rent or electricity late, or going into debt.</p>
-                    <p><strong>The August Stress for Seniors:</strong> Every August, the <span class="tooltip" data-tip="The amount of money you must pay out of your own pocket each year before your insurance starts paying.">annual deductible</span> of <strong>$100</strong> for ODB restarts. Many seniors feel confused and stressed when their medicine suddenly costs more. They often ask why they can't just pay the $100 all at once—this happens because if a medicine's base price is small, ODB cannot charge the whole $100 on that single pill bottle.</p>
+                    <p>This crisis disproportionately impacts <strong>seniors</strong>, <strong>part-time or minimum-wage workers</strong> lacking workplace benefits, and <strong>low-income households</strong>. When patients ration doses or delay treatment, health outcomes deteriorate rapidly. Heart & Stroke reports that <strong>more than 1 in 4 individuals (28%)</strong> have had to make severe trade-offs to afford prescriptions—such as buying less groceries, paying rent or utilities late, or taking on new debt.</p>
+                    <p><strong>The August Deductible Crunch:</strong> Every August, the <span class="tooltip" data-tip="The amount of money you must pay out of your own pocket each year before your insurance starts paying.">annual deductible</span> of <strong>$100</strong> for ODB restarts. Many seniors experience confusion and anxiety when their medications suddenly increase in price. They frequently question why they cannot spread the $100 payment across smaller increments—which occurs because system billing rules cannot apply the full $100 against low-cost individual prescription fills.</p>
                 </div>
 
                 <div class="lang-fr hidden">
-                    <p>Ce problème touche surtout les <strong>personnes âgées</strong>, les gens qui travaillent à <strong>temps partiel ou au salaire minimum</strong> sans assurance, et les <strong>familles à faible revenu</strong>. Quand les gens sautent des doses, leur santé devient pire. Cœur + AVC dit que <strong>plus de 1 personne sur 4 (28 %)</strong> a dû faire des choix difficiles pour payer ses pilules : acheter moins de nourriture, payer le loyer ou l'électricité en retard, ou faire des dettes.</p>
-                    <p><strong>Le stress du mois d'août :</strong> Chaque mois d'août, la <span class="tooltip" data-tip="Le montant d'argent qu'il faut payer soi-même chaque année avant que le gouvernement commence à payer.">franchise annuelle</span> de <strong>100 $</strong> du programme ODB recommence. Beaucoup de personnes âgées sont mêlées et stressées parce que leurs médicaments coûtent plus cher d'un coup. Elles ne peuvent pas toujours payer les 100 $ d'un seul coup si le prix de leur médicament est trop petit.</p>
+                    <p>Ce problème touche surtout les <strong>personnes âgées</strong>, les travailleurs à <strong>temps partiel ou au salaire minimum</strong> sans assurance, et les <strong>familles à faible revenu</strong>. Quand les gens sautent des doses, leur santé empire. Cœur + AVC indique que <strong>plus de 1 personne sur 4 (28 %)</strong> a dû faire des choix difficiles : acheter moins de nourriture, payer le loyer en retard, ou faire des dettes.</p>
+                    <p><strong>Le stress du mois d'août :</strong> Chaque mois d'août, la <span class="tooltip" data-tip="Le montant d'argent qu'il faut payer soi-même chaque année avant que le gouvernement commence à payer.">franchise annuelle</span> de <strong>100 $</strong> d'ODB recommence. Beaucoup de personnes âgées sont stressées car leurs médicaments coûtent plus cher d'un coup, et elles ne comprennent pas pourquoi elles ne peuvent pas payer les 100 $ petit à petit.</p>
                 </div>
             </div>
 
-            <!-- Section 4: Current Programs & Solutions -->
-            <div class="card">
-                <h3 data-en="4. Ontario Programs & How We Can Fix This" 
-                    data-fr="4. Les programmes en Ontario et les solutions">
-                    4. Ontario Programs & How We Can Fix This
+            <!-- Section 4 -->
+            <div class="content-card">
+                <div class="card-header-tag">04 / Policy & Solutions</div>
+                <h3 data-en="Existing Programs & Pathways Forward" 
+                    data-fr="Programmes actuels et solutions">
+                    Existing Programs & Pathways Forward
                 </h3>
 
                 <div class="lang-en">
-                    <p>Ontario has a few programs to help, though gaps still exist:</p>
+                    <p>Ontario features several relief programs, though structural limitations remain:</p>
                     <ul>
-                        <li><strong>ODB (Ontario Drug Benefit):</strong> Covers over 5,900 drugs for people 65+ and those on social assistance ($100 deductible + up to $4.11/drug, or $2/drug with no deductible for low-income seniors).</li>
-                        <li><strong>OHIP+:</strong> Pays for over 5,900 drugs for free for youth 24 and under who have an OHIP card and <em>no</em> private insurance. (If they have even a small private plan, they lose OHIP+ and must pay the rest themselves).</li>
-                        <li><strong>Trillium Drug Program:</strong> Helps Ontarians of any age whose drug costs are very high compared to their family income.</li>
-                        <li><strong>Health Canada Rules:</strong> Companies must warn early about shortages so Canada can bring in medicine from other countries if urgent.</li>
+                        <li><strong>ODB (Ontario Drug Benefit):</strong> Covers 5,900+ medications for seniors 65+ and social assistance recipients ($100 annual deductible + up to $4.11/drug copay, or $2/drug with no deductible for low-income seniors).</li>
+                        <li><strong>OHIP+:</strong> Fully covers 5,900+ medications for youth aged 24 and under who have an OHIP card and <em>no</em> private insurance. (Note: possessing even minimal private coverage disqualifies youth from OHIP+, requiring them to pay deductibles).</li>
+                        <li><strong>Trillium Drug Program:</strong> Assists Ontarians of any age facing exceptionally high prescription costs relative to household income.</li>
+                        <li><strong>Health Canada Mandates:</strong> Requires manufacturers to report potential shortages early to facilitate international sourcing.</li>
                     </ul>
-                    <p><strong>How We Can Make Things Better:</strong></p>
+                    <p><strong>Proposed Solutions:</strong></p>
                     <ul>
-                        <li>Create a <span class="tooltip" data-tip="A system where the government pays for essential medicines for every single person in Canada.">universal pharmacare program</span> so the government pays for essential medicines for everyone, no matter their age or job.</li>
-                        <li>Make government forms simpler for seniors and low-income families.</li>
-                        <li>Tell people in our community about the <strong>Trillium Program</strong> and the <strong>211 helpline</strong> (which helps find financial aid), and write to politicians to demand fair drug access for all.</li>
+                        <li>Establish a <span class="tooltip" data-tip="A public system where the government pays for essential medicines for every Canadian citizen.">universal pharmacare program</span> guaranteeing government-funded essential medicines regardless of age or employment status.</li>
+                        <li>Streamline bureaucratic paperwork for seniors and low-income families.</li>
+                        <li>Empower community advocacy by directing residents to the Trillium Program and the <strong>211 financial helpline</strong>, while writing to elected officials to demand equitable drug access.</li>
                     </ul>
                 </div>
 
                 <div class="lang-fr hidden">
-                    <p>En Ontario, il y a quelques programmes pour aider, mais ils ont des limites :</p>
+                    <p>En Ontario, il existe des programmes d'aide, mais avec des limites :</p>
                     <ul>
-                        <li><strong>ODB :</strong> Paie plus de 5 900 médicaments pour les 65 ans et plus et les gens sur l'aide sociale (franchise de 100 $ + jusqu'à 4,11 $ par médicament, ou seulement 2 $ sans franchise pour les personnes âgées à faible revenu).</li>
-                        <li><strong>OHIP+ :</strong> Paie plus de 5 900 médicaments gratuitement pour les jeunes de 24 ans et moins qui n'ont <em>pas</em> d'assurance privée. (S'ils ont une petite assurance privée, ils perdent OHIP+ et doivent payer la différence).</li>
-                        <li><strong>Programme Trillium :</strong> Aide les gens de tout âge en Ontario quand leurs médicaments coûtent trop cher par rapport à l'argent que leur famille gagne.</li>
-                        <li><strong>Règles de Santé Canada :</strong> Les compagnies doivent avertir d'avance s'il va manquer des médicaments pour qu'on puisse en faire venir d'autres pays.</li>
+                        <li><strong>ODB :</strong> Paie plus de 5 900 médicaments pour les 65 ans et plus et l'aide sociale (franchise de 100 $ + copaiement de 4,11 $ max, ou 2 $ sans franchise pour les personnes à faible revenu).</li>
+                        <li><strong>OHIP+ :</strong> Paie les médicaments gratuitement pour les jeunes de 24 ans et moins qui n'ont <em>pas</em> d'assurance privée. (Si une petite assurance existe, ils perdent OHIP+).</li>
+                        <li><strong>Programme Trillium :</strong> Aide les gens de tout âge quand les médicaments coûtent trop cher par rapport au salaire familial.</li>
+                        <li><strong>Règles de Santé Canada :</strong> Exige que les compagnies avertissent d'avance en cas de pénurie.</li>
                     </ul>
-                    <p><strong>Comment changer les choses ?</strong></p>
+                    <p><strong>Solutions proposées :</strong></p>
                     <ul>
-                        <li>Créer un <span class="tooltip" data-tip="Un programme où le gouvernement paie les médicaments essentiels pour tout le monde au Canada.">programme universel</span> pour que le gouvernement paie les médicaments essentiels pour tout le monde, peu importe l'âge ou le travail.</li>
-                        <li>Rendre les formulaires du gouvernement plus simples pour les personnes âgées.</li>
-                        <li>Informer nos proches sur le <strong>programme Trillium</strong> et le numéro <strong>211</strong> (pour trouver de l'aide financière), et écrire aux politiciens pour demander que tout le monde ait accès aux médicaments.</li>
+                        <li>Créer un <span class="tooltip" data-tip="Un système où le gouvernement paie les médicaments essentiels pour tout le monde au Canada.">programme universel</span> pour que le gouvernement paie les médicaments pour tous.</li>
+                        <li>Simplifier les formulaires administratifs.</li>
+                        <li>Informer les gens sur le <strong>programme Trillium</strong> et le service <strong>211</strong>, et écrire aux politiciens pour demander des changements.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <!-- ================= COMMON DRUGS TAB ================= -->
-        <section id="drugs" class="tab-content">
-            <div class="hero-card">
-                <h2 data-en="Common Prescription Medications" 
-                    data-fr="Médicaments d'ordonnance courants">
-                    Common Prescription Medications
-                </h2>
-                <p class="subtitle" 
-                   data-en="Simple guides to everyday medicines you see at the pharmacy. Hover over dotted terms for definitions!" 
-                   data-fr="Guides simples des médicaments courants à la pharmacie. Passe ta souris sur les mots soulignés !">
-                   Simple guides to everyday medicines you see at the pharmacy. Hover over dotted terms for definitions!
-                </p>
+        <section id="drugs" class="tab-pane" role="tabpanel">
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <span class="hero-tag" data-en="Pharmacy Index" data-fr="Index pharmaceutique">Pharmacy Index</span>
+                    <h2 data-en="Common Prescription Medications" 
+                        data-fr="Médicaments d'ordonnance courants">
+                        Common Prescription Medications
+                    </h2>
+                    <p data-en="Search and explore everyday medications encountered in clinical pharmacy practice. Hover over definitions for instant clarification." 
+                       data-fr="Recherchez et explorez les médicaments courants vus en pharmacie. Passez la souris sur les définitions pour plus de détails.">
+                        Search and explore everyday medications encountered in clinical pharmacy practice. Hover over definitions for instant clarification.
+                    </p>
+                </div>
             </div>
 
-            <div class="drug-grid">
-                <!-- 1. Atorvastatin (a600045) -->
-                <div class="drug-card">
-                    <h3>Atorvastatin (Lipitor)</h3>
+            <!-- Search and Filter Toolbar -->
+            <div class="search-toolbar">
+                <input type="text" id="drug-search" placeholder="Search medications by name or condition..." onkeyup="filterDrugs()" aria-label="Search drugs">
+                <div class="filter-pills">
+                    <button class="pill active" onclick="filterCategory('all', this)">All</button>
+                    <button class="pill" onclick="filterCategory('Heart', this)">Heart & Cholesterol</button>
+                    <button class="pill" onclick="filterCategory('Diabetes', this)">Diabetes & Weight</button>
+                    <button class="pill" onclick="filterCategory('Stomach', this)">Stomach Acid</button>
+                    <button class="pill" onclick="filterCategory('Breathing', this)">Breathing</button>
+                    <button class="pill" onclick="filterCategory('Mental', this)">Mental Health</button>
+                </div>
+            </div>
+
+            <div class="drug-grid" id="drug-container">
+                <!-- Drug 1 -->
+                <div class="drug-card" data-category="Heart" data-name="Atorvastatin Lipitor">
+                    <div class="drug-header">
+                        <h3>Atorvastatin (Lipitor)</h3>
+                        <span class="pill-tag">Heart & Cholesterol</span>
+                    </div>
                     <div class="lang-en">
-                        <span class="tag">Heart & Cholesterol</span>
-                        <p><strong>What it does:</strong> Lowers "bad" <span class="tooltip" data-tip="A waxy fat in your blood. Too much can clog your blood vessels.">cholesterol</span> and fats in the blood to prevent heart attacks and strokes.</p>
-                        <p><strong>Why access matters:</strong> People usually take this every day for life. Skipping doses raises the risk of heart trouble.</p>
+                        <p><strong>Primary Function:</strong> Lowers "bad" <span class="tooltip" data-tip="A waxy fat in your blood. High amounts can build up and block blood vessels.">cholesterol</span> and fats to prevent heart attacks and strokes.</p>
+                        <p class="access-note"><strong>Access Note:</strong> Taken daily for chronic care; discontinuation significantly increases cardiovascular risks.</p>
                     </div>
                     <div class="lang-fr hidden">
-                        <span class="tag">Cœur et Cholestérol</span>
-                        <p><strong>À quoi ça sert :</strong> Baisse le mauvais <span class="tooltip" data-tip="Un gras dans le sang qui peut bloquer les vaisseaux sanguins.">cholestérol</span> dans le sang pour éviter les crises cardiaques.</p>
-                        <p><strong>Pourquoi c'est important :</strong> On le prend tous les jours. Sauter des doses est dangereux pour le cœur.</p>
+                        <p><strong>Fonction principale :</strong> Baisse le mauvais <span class="tooltip" data-tip="Un gras dans le sang qui peut bloquer les vaisseaux sanguins.">cholestérol</span> pour éviter les crises cardiaques.</p>
+                        <p class="access-note"><strong>Note d'accès :</strong> Pris chaque jour; sauter des doses augmente les risques cardiaques.</p>
                     </div>
                 </div>
 
-                <!-- 2. Rosuvastatin (a603033) -->
-                <div class="drug-card">
-                    <h3>Rosuvastatin (Crestor)</h3>
+                <!-- Drug 2 -->
+                <div class="drug-card" data-category="Heart" data-name="Rosuvastatin Crestor">
+                    <div class="drug-header">
+                        <h3>Rosuvastatin (Crestor)</h3>
+                        <span class="pill-tag">Heart & Cholesterol</span>
+                    </div>
                     <div class="lang-en">
-                        <span class="tag">Heart & Cholesterol</span>
-                        <p><strong>What it does:</strong> Slows down how much cholesterol the liver makes, keeping blood vessels clear.</p>
-                        <p><strong>Why access matters:</strong> Works best when taken daily alongside healthy eating.</p>
+                        <p><strong>Primary Function:</strong> Inhibits hepatic cholesterol synthesis, maintaining clear arterial pathways.</p>
+                        <p class="access-note"><strong>Access Note:</strong> High efficacy when paired with routine dietary management.</p>
                     </div>
                     <div class="lang-fr hidden">
-                        <span class="tag">Cœur et Cholestérol</span>
-                        <p><strong>À quoi ça sert :</strong> Aide le foie à faire moins de gras dans le sang pour protéger le cœur.</p>
-                        <p><strong>Pourquoi c'est important :</strong> Doit être pris chaque jour pour bien protéger les vaisseaux sanguins.</p>
+                        <p><strong>Fonction principale :</strong> Aide le foie à fabriquer moins de gras pour garder les vaisseaux propres.</p>
+                        <p class="access-note"><strong>Note d'accès :</strong> Efficace lorsqu'associé à une saine alimentation quotidienne.</p>
                     </div>
                 </div>
 
-                <!-- 3. Amlodipine (a692044) -->
-                <div class="drug-card">
-                    <h3>Amlodipine (Norvasc)</h3>
+                <!-- Drug 3 -->
+                <div class="drug-card" data-category="Heart" data-name="Amlodipine Norvasc">
+                    <div class="drug-header">
+                        <h3>Amlodipine (Norvasc)</h3>
+                        <span class="pill-tag">Heart & Cholesterol</span>
+                    </div>
                     <div class="lang-en">
-                        <span class="tag">Blood Pressure</span>
-                        <p><strong>What it does:</strong> Relaxes blood vessels so blood flows easily, lowering <span class="tooltip" data-tip="Hypertension: When blood pushes too hard against the walls of your blood vessels.">high blood pressure</span> and chest pain.</p>
-                        <p><strong>Why access matters:</strong> High blood pressure often has no symptoms, so people might skip pills to save money without realizing the danger.</p>
+                        <p><strong>Primary Function:</strong> Relaxes blood vessel walls to ease peripheral resistance, treating <span class="tooltip" data-tip="Hypertension: When blood pushes too forcefully against artery walls.">high blood pressure</span>.</p>
+                        <p class="access-note"><strong>Access Note:</strong> Asymptomatic nature of hypertension often leads patients to skip refills to save money.</p>
                     </div>
                     <div class="lang-fr hidden">
-                        <span class="tag">Pression artérielle</span>
-                        <p><strong>À quoi ça sert :</strong> Détend les vaisseaux sanguins pour baisser la <span class="tooltip" data-tip="Hypertension : Quand le sang pousse trop fort dans les vaisseaux.">haute pression</span> et la douleur à la poitrine.</p>
-                        <p><strong>Pourquoi c'est important :</strong> Comme on ne sent pas la haute pression, certains sautent des pilules pour économiser.</p>
+                        <p><strong>Fonction principale :</strong> Détend les vaisseaux sanguins pour baisser la <span class="tooltip" data-tip="Hypertension : Quand le sang pousse trop fort contre les parois des artères.">haute pression</span>.</p>
+                        <p class="access-note"><strong>Note d'accès :</strong> L'hypertension n'ayant pas de symptômes évidents, certains coupent les frais par erreur.</p>
                     </div>
                 </div>
 
-                <!-- 4. Metformin (a696005) -->
-                <div class="drug-card">
-                    <h3>Metformin (Glucophage)</h3>
+                <!-- Drug 4 -->
+                <div class="drug-card" data-category="Diabetes" data-name="Metformin Glucophage">
+                    <div class="drug-header">
+                        <h3>Metformin (Glucophage)</h3>
+                        <span class="pill-tag">Diabetes & Weight</span>
+                    </div>
                     <div class="lang-en">
-                        <span class="tag">Type 2 Diabetes</span>
-                        <p><strong>What it does:</strong> Helps control <span class="tooltip" data-tip="Glucose: The main sugar in your blood that gives your body energy.">blood sugar</span> levels in people with Type 2 diabetes.</p>
-                        <p><strong>Why access matters:</strong> Uncontrolled blood sugar can hurt the eyes, kidneys, and nerves over time.</p>
+                        <p><strong>Primary Function:</strong> Regulates hepatic glucose production and improves insulin sensitivity for Type 2 diabetes.</p>
+                        <p class="access-note"><strong>Access Note:</strong> Long-term adherence prevents severe microvascular and macrovascular complications.</p>
                     </div>
                     <div class="lang-fr hidden">
-                        <span class="tag">Diabète de type 2</span>
-                        <p><strong>À quoi ça sert :</strong> Aide à contrôler le niveau de <span class="tooltip" data-tip="Glucose : Le sucre dans le sang qui donne de l'énergie au corps.">sucre dans le sang</span> pour les gens qui ont le diabète.</p>
-                        <p><strong>Pourquoi c'est important :</strong> Trop de sucre dans le sang peut abîmer les yeux et les reins.</p>
+                        <p><strong>Fonction principale :</strong> Régule le <span class="tooltip" data-tip="Glucose : Le sucre dans le sang qui fournit de l'énergie à l'organisme.">sucre sanguin</span> et aide l'insuline pour le diabète de type 2.</p>
+                        <p class="access-note"><strong>Note d'accès :</strong> Essentiel sur le long terme pour éviter des dommages aux reins et aux yeux.</p>
                     </div>
                 </div>
 
-                <!-- 5. Semaglutide / Ozempic (a699060 / a618008) -->
-                <div class="drug-card">
-                    <h3>Semaglutide (Ozempic / Wegovy)</h3>
+                <!-- Drug 5 -->
+                <div class="drug-card" data-category="Diabetes" data-name="Semaglutide Ozempic Wegovy">
+                    <div class="drug-header">
+                        <h3>Semaglutide (Ozempic / Wegovy)</h3>
+                        <span class="pill-tag">Diabetes & Weight</span>
+                    </div>
                     <div class="lang-en">
-                        <span class="tag">Diabetes & Weight</span>
-                        <p><strong>What it does:</strong> Helps the body release <span class="tooltip" data-tip="A hormone that helps sugar move from your blood into your body's cells for energy.">insulin</span> when blood sugar is high and slows digestion.</p>
-                        <p><strong>Why access matters:</strong> Very expensive! Even with insurance or manufacturer cards, patients often pay hundreds of dollars.</p>
+                        <p><strong>Primary Function:</strong> Stimulates GLP-1 receptor pathways to release <span class="tooltip" data-tip="An essential hormone that transports glucose from blood into cells.">insulin</span> and delay gastric emptying.</p>
+                        <p class="access-note"><strong>Access Note:</strong> Extremely high out-of-pocket costs even with provincial or private plans.</p>
                     </div>
                     <div class="lang-fr hidden">
-                        <span class="tag">Diabète et Poids</span>
-                        <p><strong>À quoi ça sert :</strong> Aide le corps à produire de l'<span class="tooltip" data-tip="Une hormone qui aide à contrôler le sucre dans le sang.">insuline</span> quand le sucre est trop haut.</p>
-                        <p><strong>Pourquoi c'est important :</strong> Coûte très cher ! Même avec une assurance, il faut souvent payer des centaines de dollars.</p>
+                        <p><strong>Fonction principale :</strong> Stimule la production d'<span class="tooltip" data-tip="Une hormone qui aide à faire entrer le sucre dans les cellules.">insuline</span> et ralentit la digestion.</p>
+                        <p class="access-note"><strong>Note d'accès :</strong> Coûts de poche très élevés malgré les programmes gouvernementaux.</p>
                     </div>
                 </div>
 
-                <!-- 6. Levothyroxine (a682461) -->
-                <div class="drug-card">
-                    <h3>Levothyroxine (Synthroid)</h3>
+                <!-- Drug 6 -->
+                <div class="drug-card" data-category="Heart" data-name="Levothyroxine Synthroid">
+                    <div class="drug-header">
+                        <h3>Levothyroxine (Synthroid)</h3>
+                        <span class="pill-tag">Hormone</span>
+                    </div>
                     <div class="lang-en">
-                        <span class="tag">Thyroid Hormone</span>
-                        <p><strong>What it does:</strong> Replaces a <span class="tooltip" data-tip="A chemical messenger made by the thyroid gland in your neck that controls your body's energy.">thyroid hormone</span> when the body doesn't make enough on its own.</p>
-                        <p><strong>Why access matters:</strong> Keeps energy levels, heart rate, and body temperature normal.</p>
+                        <p><strong>Primary Function:</strong> Synthetically replaces deficient <span class="tooltip" data-tip="A vital chemical messenger produced in the neck that regulates metabolism.">thyroid hormone</span> to sustain metabolic balance.</p>
+                        <p class="access-note"><strong>Access Note:</strong> Vital for energy regulation, thermal control, and cardiac rhythm.</p>
                     </div>
                     <div class="lang-fr hidden">
-                        <span class="tag">Hormone thyroïdienne</span>
-                        <p><strong>À quoi ça sert :</strong> Remplace une <span class="tooltip" data-tip="Une hormone faite dans le cou qui contrôle l'énergie du corps.">hormone</span> quand le corps n'en fabrique pas assez.</p>
-                        <p><strong>Pourquoi c'est important :</strong> Donne de l'énergie et garde le cœur et la température du corps normaux.</p>
+                        <p><strong>Fonction principale :</strong> Remplace artificiellement une <span class="tooltip" data-tip="Une hormone fabriquée dans le cou qui contrôle le métabolisme.">hormone thyroïdienne</span> manquante.</p>
+                        <p class="access-note"><strong>Note d'accès :</strong> Crucial pour l'énergie, la température corporelle et le rythme cardiaque.</p>
                     </div>
                 </div>
 
-                <!-- 7. Omeprazole (a693024) -->
-                <div class="drug-card">
-                    <h3>Omeprazole (Losec)</h3>
+                <!-- Drug 7 -->
+                <div class="drug-card" data-category="Stomach" data-name="Omeprazole Losec">
+                    <div class="drug-header">
+                        <h3>Omeprazole (Losec)</h3>
+                        <span class="pill-tag">Stomach Acid</span>
+                    </div>
                     <div class="lang-en">
-                        <span class="tag">Stomach Acid</span>
-                        <p><strong>What it does:</strong> Reduces the amount of acid made in the stomach to treat heartburn and <span class="tooltip" data-tip="GERD: When stomach acid flows back up into the food pipe, causing pain.">acid reflux</span>.</p>
-                        <p><strong>Why access matters:</strong> Protects the stomach lining and food pipe from painful acid damage.</p>
+                        <p><strong>Primary Function:</strong> Suppresses gastric proton pumps to heal erosive esophagitis and relieve chronic <span class="tooltip" data-tip="GERD: When acidic stomach contents routinely irritate the esophageal lining.">acid reflux</span>.</p>
+                        <p class="access-note"><strong>Access Note:</strong> Protects upper gastrointestinal tissue from ulceration and chronic damage.</p>
                     </div>
                     <div class="lang-fr hidden">
-                        <span class="tag">Acide de l'estomac</span>
-                        <p><strong>À quoi ça sert :</strong> Réduit l'acide dans l'estomac pour calmer les brûlures d'estomac (<span class="tooltip" data-tip="Reflux gastrique : Quand l'acide remonte dans la gorge.">reflux</span>).</p>
-                        <p><strong>Pourquoi c'est important :</strong> Protège l'estomac contre la douleur causée par l'acide.</p>
+                        <p><strong>Fonction principale :</strong> Bloque l'acide gastrique pour traiter les brûlures et le <span class="tooltip" data-tip="Reflux gastrique : Remontée d'acide irriter l'œsophage.">reflux</span>.</p>
+                        <p class="access-note"><strong>Note d'accès :</strong> Protège les tissus de l'œsophage contre les ulcères douloureux.</p>
                     </div>
                 </div>
 
-                <!-- 8. Pantoprazole (a601246) -->
-                <div class="drug-card">
-                    <h3>Pantoprazole (Pantoloc)</h3>
+                <!-- Drug 8 -->
+                <div class="drug-card" data-category="Stomach" data-name="Pantoprazole Pantoloc">
+                    <div class="drug-header">
+                        <h3>Pantoprazole (Pantoloc)</h3>
+                        <span class="pill-tag">Stomach Acid</span>
+                    </div>
                     <div class="lang-en">
-                        <span class="tag">Stomach Acid</span>
-                        <p><strong>What it does:</strong> Blocks stomach acid production to heal ulcers and stop severe heartburn.</p>
-                        <p><strong>Why access matters:</strong> Often used as a backup when <em>pantoprazole magnesium</em> or <em>rabeprazole</em> goes on shortage!</p>
+                        <p><strong>Primary Function:</strong> Proton pump inhibitor used to manage hypersecretory conditions.</p>
+                        <p class="access-note"><strong>Access Note:</strong> Frequently substituted when <em>rabeprazole</em> experiences nationwide shortages.</p>
                     </div>
                     <div class="lang-fr hidden">
-                        <span class="tag">Acide de l'estomac</span>
-                        <p><strong>À quoi ça sert :</strong> Bloque l'acide de l'estomac pour guérir les ulcères et les brûlures.</p>
-                        <p><strong>Pourquoi c'est important :</strong> Souvent utilisé pour remplacer le <em>rabeprazole</em> quand il manque en pharmacie !</p>
+                        <p><strong>Fonction principale :</strong> Inhibiteur de pompe à protons pour réduire l'acidité stomacale.</p>
+                        <p class="access-note"><strong>Note d'accès :</strong> Utilisé en substitution lorsque le <em>rabeprazole</em> est en rupture de stock.</p>
                     </div>
                 </div>
 
-                <!-- 9. Rabeprazole (a699060) -->
-                <div class="drug-card">
-                    <h3>Rabeprazole (Pariet)</h3>
+                <!-- Drug 9 -->
+                <div class="drug-card" data-category="Stomach" data-name="Rabeprazole Pariet">
+                    <div class="drug-header">
+                        <h3>Rabeprazole (Pariet)</h3>
+                        <span class="pill-tag">Stomach Acid</span>
+                    </div>
                     <div class="lang-en">
-                        <span class="tag">Stomach Acid</span>
-                        <p><strong>What it does:</strong> Lowers stomach acid so damaged tissue in the stomach and throat can heal.</p>
-                        <p><strong>Why access matters:</strong> Frequently affected by Canadian drug shortages, forcing doctors to switch prescriptions.</p>
+                        <p><strong>Primary Function:</strong> Rapidly decreases gastric acid production to heal peptic ulcers.</p>
+                        <p class="access-note"><strong>Access Note:</strong> Highly prone to Canadian supply shortages, requiring active clinical therapy adjustments.</p>
                     </div>
                     <div class="lang-fr hidden">
-                        <span class="tag">Acide de l'estomac</span>
-                        <p><strong>À quoi ça sert :</strong> Baisse l'acide pour laisser l'estomac et la gorge guérir.</p>
-                        <p><strong>Pourquoi c'est important :</strong> Souvent en rupture de stock au Canada, ce qui oblige à changer de médicament.</p>
+                        <p><strong>Fonction principale :</strong> Réduit rapidement l'acide gastrique pour guérir les ulcères.</p>
+                        <p class="access-note"><strong>Note d'accès :</strong> Souvent touché par les pénuries au Canada, nécessitant des ajustements.</p>
                     </div>
                 </div>
 
-                <!-- 10. Salbutamol / Albuterol (a682145 / a697037) -->
-                <div class="drug-card">
-                    <h3>Salbutamol / Albuterol (Ventolin)</h3>
+                <!-- Drug 10 -->
+                <div class="drug-card" data-category="Breathing" data-name="Salbutamol Albuterol Ventolin">
+                    <div class="drug-header">
+                        <h3>Salbutamol / Albuterol (Ventolin)</h3>
+                        <span class="pill-tag">Breathing</span>
+                    </div>
                     <div class="lang-en">
-                        <span class="tag">Breathing & Asthma</span>
-                        <p><strong>What it does:</strong> A rescue inhaler that quickly opens airways in the lungs during an <span class="tooltip" data-tip="A condition where airways swell and narrow, making it hard to breathe.">asthma</span> attack.</p>
-                        <p><strong>Why access matters:</strong> Essential emergency medicine—people need it right away when they cannot breathe.</p>
+                        <p><strong>Primary Function:</strong> Fast-acting bronchodilator rescue inhaler that immediately relaxes constricted airways during an <span class="tooltip" data-tip="A chronic condition where bronchial airways swell, spasm, and narrow.">asthma</span> episode.</p>
+                        <p class="access-note"><strong>Access Note:</strong> Non-negotiable life-saving emergency medication requiring uninterrupted availability.</p>
                     </div>
                     <div class="lang-fr hidden">
-                        <span class="tag">Respiration et Asthme</span>
-                        <p><strong>À quoi ça sert :</strong> Une pompe qui ouvre vite les poumons pendant une crise d'<span class="tooltip" data-tip="Une maladie qui rend la respiration difficile.">asthme</span>.</p>
-                        <p><strong>Pourquoi c'est important :</strong> Médicament d'urgence essentiel pour pouvoir respirer.</p>
+                        <p><strong>Fonction principale :</strong> Inhalateur de secours qui ouvre rapidement les voies respiratoires lors d'une crise d'<span class="tooltip" data-tip="Maladie chronique qui enflamme et resserre les bronches.">asthme</span>.</p>
+                        <p class="access-note"><strong>Note d'accès :</strong> Médicament d'urgence indispensable qui ne doit jamais manquer.</p>
                     </div>
                 </div>
 
-                <!-- 11. Escitalopram (a603005 / a697048) -->
-                <div class="drug-card">
-                    <h3>Escitalopram (Cipralex)</h3>
+                <!-- Drug 11 -->
+                <div class="drug-card" data-category="Mental" data-name="Escitalopram Cipralex">
+                    <div class="drug-header">
+                        <h3>Escitalopram (Cipralex)</h3>
+                        <span class="pill-tag">Mental Health</span>
+                    </div>
                     <div class="lang-en">
-                        <span class="tag">Mental Health</span>
-                        <p><strong>What it does:</strong> Balances natural chemicals (<span class="tooltip" data-tip="A natural chemical in the brain that helps control mood and happiness.">serotonin</span>) in the brain to treat depression and anxiety.</p>
-                        <p><strong>Why access matters:</strong> Stopping suddenly causes bad side effects, so steady access is crucial.</p>
+                        <p><strong>Primary Function:</strong> Selective serotonin reuptake inhibitor (SSRI) that stabilizes neurochemical balance (<span class="tooltip" data-tip="A key brain neurotransmitter responsible for mood regulation and emotional well-being.">serotonin</span>) for anxiety and depression.</p>
+                        <p class="access-note"><strong>Access Note:</strong> Abrupt cessation causes severe withdrawal; consistent supply is essential.</p>
                     </div>
                     <div class="lang-fr hidden">
-                        <span class="tag">Santé mentale</span>
-                        <p><strong>À quoi ça sert :</strong> Équilibre la <span class="tooltip" data-tip="Une substance dans le cerveau qui aide à garder une bonne humeur.">sérotonine</span> dans le cerveau pour aider contre l'anxiété et la dépression.</p>
-                        <p><strong>Pourquoi c'est important :</strong> Arrêter d'un coup rend malade, donc il faut toujours en avoir.</p>
+                        <p><strong>Fonction principale :</strong> Antidépresseur (ISRS) qui stabilise la <span class="tooltip" data-tip="Neurotransmetteur clé qui régule l'humeur et le bien-être émotionnel.">sérotonine</span> cérébrale.</p>
+                        <p class="access-note"><strong>Note d'accès :</strong> L'arrêt brusque provoque de graves effets secondaires; un approvisionnement constant est vital.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ================= SOURCES & OBSERVATIONS TAB ================= -->
-        <section id="sources" class="tab-content">
-            <div class="hero-card">
-                <h2 data-en="Sources & Pharmacy Observations" 
-                    data-fr="Sources et Observations à la Pharmacie">
-                    Sources & Pharmacy Observations
-                </h2>
-                <p class="subtitle" 
-                   data-en="First-hand experiences from working in an Ontario pharmacy and APA academic references." 
-                   data-fr="Observations réelles dans une pharmacie en Ontario et références académiques en format APA.">
-                   First-hand experiences from working in an Ontario pharmacy and APA academic references.
-                </p>
+        <section id="sources" class="tab-pane" role="tabpanel">
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <span class="hero-tag" data-en="References & Fieldwork" data-fr="Références et Travail de Terrain">References & Fieldwork</span>
+                    <h2 data-en="Sources & Pharmacy Observations" 
+                        data-fr="Sources et Observations à la Pharmacie">
+                        Sources & Pharmacy Observations
+                    </h2>
+                    <p data-en="A documented synthesis of first-hand professional pharmacy observations alongside rigorous APA 7th edition academic references." 
+                       data-fr="Une synthèse documentée d'observations professionnelles en pharmacie combinée à des références académiques APA 7e édition.">
+                        A documented synthesis of first-hand professional pharmacy observations alongside rigorous APA 7th edition academic references.
+                    </p>
+                </div>
             </div>
 
-            <!-- Dedicated First-Person Observations Section -->
-            <div class="card observation-card">
-                <h3 data-en="📋 First-Person Source: What I See at the Pharmacy" 
-                    data-fr="📋 Source de première main : Ce que je vois à la pharmacie">
-                    📋 First-Person Source: What I See at the Pharmacy
+            <!-- Observations Card -->
+            <div class="content-card observation-highlight">
+                <div class="card-header-tag">Field Notes</div>
+                <h3 data-en="📋 First-Person Source: What I Observe at the Pharmacy Counter" 
+                    data-fr="📋 Source de première main : Ce que j'observe au comptoir de la pharmacie">
+                    📋 First-Person Source: What I Observe at the Pharmacy Counter
                 </h3>
                 
                 <div class="lang-en">
-                    <p>Working directly in an Ontario pharmacy shows how drug policies affect real people every single day:</p>
-                    <ul class="obs-list">
-                        <li><strong>High Out-of-Pocket Costs:</strong> Even with private insurance or OHIP/ODB, expensive drugs like <em>Ozempic</em> or <em>Wegovy</em> still cost patients hundreds of dollars—even when they use manufacturer discount cards.</li>
-                        <li><strong>The $4.11 Co-payment:</strong> Almost every patient still has to pay a dispensing fee of around $4.11 per medication. Completely free prescriptions are rare and usually only happen when someone combines two plans (such as their own and their partner's).</li>
-                        <li><strong>Real-Time Drug Shortages:</strong> Medications like <em>rabeprazole</em> and <em>pantoprazole magnesium</em> have been frequently out of stock. Pharmacists and doctors must scramble to switch patients to alternatives like regular <em>pantoprazole</em>, or ask patients to wait if it isn't urgent.</li>
-                        <li><strong>Seniors & The August Deductible Confusion:</strong> Many elderly patients become stressed and confused every August when the $100 annual ODB deductible resets. They often don't understand why they can't pay the $100 all at once—which happens because ODB cannot charge the full $100 on a single low-cost prescription.</li>
-                        <li><strong>Behind-the-Scenes Billing Work:</strong> Pharmacy staff often have to bill private insurance and ODB separately or change the billing order on the computer just to get a claim to go through. Sometimes, the pharmacy even waives small co-payment fees to help patients afford their meds.</li>
+                    <p>Direct exposure within an Ontario retail pharmacy reveals how systemic policies translate into everyday clinical realities:</p>
+                    <ul class="styled-list">
+                        <li><strong>Persistent Out-of-Pocket Barriers:</strong> Despite private coverage or public programs like OHIP/ODB, specialty medications like <em>Ozempic</em> and <em>Wegovy</em> routinely leave patients with steep hundreds-of-dollars shortfalls, even after manufacturer savings cards are applied.</li>
+                        <li><strong>The Ubiquitous $4.11 Dispensing Fee:</strong> Almost all beneficiaries face dispensing copayments around $4.11 per script. Completely subsidized fills are exceptionally rare, typically occurring only when patients stack primary and spousal plans.</li>
+                        <li><strong>Operational Drug Shortages:</strong> Supply disruptions for drugs like <em>rabeprazole</em> and <em>pantoprazole magnesium</em> force immediate clinical interventions—requiring pharmacists to contact prescribers for therapeutic substitutions or advise patients to wait.</li>
+                        <li><strong>August Deductible Anxiety:</strong> Every August, the $100 ODB deductible resets. Elderly patients frequently experience acute confusion and stress regarding sudden price spikes, misunderstanding why system rules prevent spreading the $100 fee across smaller increments.</li>
+                        <li><strong>Complex Computer Adjudication:</strong> Pharmacy staff spend considerable time troubleshooting dual-billing complexities between private plans and ODB, occasionally waiving minor copays out-of-pocket to ensure vulnerable patients leave with necessary medications.</li>
                     </ul>
                 </div>
 
                 <div class="lang-fr hidden">
-                    <p>Travailler directement dans une pharmacie en Ontario montre comment les règles des assurances touchent les vrais gens chaque jour :</p>
-                    <ul class="obs-list">
-                        <li><strong>Des prix encore très chers :</strong> Même avec une assurance privée ou OHIP/ODB, des médicaments comme <em>Ozempic</em> ou <em>Wegovy</em> coûtent encore des centaines de dollars, même avec une carte rabais.</li>
-                        <li><strong>Le copaiement de 4,11 $ :</strong> Presque tous les patients doivent payer des frais d'environ 4,11 $ par médicament. Avoir des médicaments gratuits est très rare et arrive seulement quand on a deux assurances (la sienne et celle de son partenaire).</li>
-                        <li><strong>Les ruptures de stock :</strong> Des médicaments comme le <em>rabeprazole</em> et le <em>pantoprazole magnésium</em> manquent souvent. Les médecins doivent changer la prescription pour du <em>pantoprazole</em> normal ou demander au patient d'attendre.</li>
-                        <li><strong>La confusion du mois d'août :</strong> Beaucoup de personnes âgées sont stressées en août quand la franchise de 100 $ d'ODB recommence. Elles ne comprennent pas pourquoi elles ne peuvent pas payer les 100 $ d'un seul coup (c'est parce que le prix de base de leur médicament est trop petit).</li>
-                        <li><strong>Le travail sur l'ordinateur à la pharmacie :</strong> On doit souvent passer l'assurance privée et ODB séparément ou changer l'ordre sur l'ordinateur pour que ça passe. Parfois, la pharmacie annule même les petits frais pour aider les patients.</li>
+                    <p>L'expérience directe dans une pharmacie en Ontario montre concrètement comment les politiques publiques affectent les patients :</p>
+                    <ul class="styled-list">
+                        <li><strong>Frais de poche persistants :</strong> Malgré les assurances ou l'aide publique, des médicaments comme l'<em>Ozempic</em> coûtent encore cher aux patients, même avec des cartes de rabais.</li>
+                        <li><strong>Le copaiement de 4,11 $ :</strong> Presque tous les patients paient des frais de dispense d'environ 4,11 $. Les médicaments entièrement gratuits sont très rares (souvent conditionnels à l'utilisation de deux assurances).</li>
+                        <li><strong>Ruptures de stock opérationnelles :</strong> Les pénuries de <em>rabeprazole</em> ou de <em>pantoprazole magnésium</em> obligent le personnel à joindre les médecins pour modifier les ordonnances.</li>
+                        <li><strong>Le stress de la franchise d'août :</strong> Chaque mois d'août, la franchise de 100 $ d'ODB redémarre, causant de l'anxiété chez les personnes âgées qui ne comprennent pas pourquoi ce montant ne peut pas être fractionné.</li>
+                        <li><strong>Complexité informatique :</strong> Le personnel passe beaucoup de temps à régler les réclamations entre régimes privés et publics, allant parfois jusqu'à annuler de petits frais pour aider les patients dans le besoin.</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- APA Bibliography Section -->
-            <div class="card">
+            <!-- APA References Card -->
+            <div class="content-card">
+                <div class="card-header-tag">Bibliography</div>
                 <h3 data-en="📚 References (APA 7th Edition Format)" 
                     data-fr="📚 Bibliographie (Format APA 7e édition)">
                     📚 References (APA 7th Edition Format)
                 </h3>
-                <ul class="apa-list">
+                <ul class="apa-bibliography">
                     <li>ACODANA. (n.d.). <em>Drug plans</em>. Atlantic Canada Oncology Drug Access Navigators Association. https://acodana.ca/resources/understanding-drug-coverage/drug-plans/</li>
                     <li>Fondation des maladies du cœur et de l'AVC du Canada. (2024, February 12). <em>National poll finds nearly 1 in 4 people in Canada report measures such as skipping doses, splitting pills, not filling prescriptions due to cost</em>. https://www.heartandstroke.ca/what-we-do/media-centre/news-releases/one-in-four-canadians-not-filling-prescriptions-due-to-cost</li>
                     <li>Gouvernement du Canada. (2026, July 28). <em>Drug shortages in Canada</em>. Santé Canada. https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/drug-shortages.html</li>
@@ -414,67 +500,95 @@
         </section>
     </main>
 
-    <footer>
-        <p data-en="Daydream Pharmacy • Educational Project on Canadian Drug Access" 
-           data-fr="Daydream Pharmacy • Projet éducatif sur l'accès aux médicaments au Canada">
-           Daydream Pharmacy • Educational Project on Canadian Drug Access
+    <footer class="site-footer">
+        <p data-en="Daydream Pharmacy • Academic Research & Healthcare Equity Project" 
+           data-fr="Daydream Pharmacy • Projet de recherche académique et équité en santé">
+           Daydream Pharmacy • Academic Research & Healthcare Equity Project
         </p>
     </footer>
 
-    <!-- Interactive JavaScript -->
+    <!-- Interactive Logic -->
     <script>
         let currentLang = 'en';
 
-        // Switch between Home, Common Drugs, and Sources tabs
-        function openTab(tabName) {
-            const contents = document.querySelectorAll('.tab-content');
-            const buttons = document.querySelectorAll('.tab-btn');
+        function openTab(tabId) {
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
 
-            contents.forEach(content => content.classList.remove('active'));
-            buttons.forEach(btn => btn.classList.remove('active'));
-
-            document.getElementById(tabName).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
             event.currentTarget.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Toggle Light / Dark Mode
         function toggleTheme() {
             const body = document.body;
             const btn = document.getElementById('theme-toggle');
+            const iconSpan = btn.querySelector('.icon');
+            const textSpan = btn.querySelector('.btn-text');
 
             if (body.classList.contains('light-mode')) {
                 body.classList.replace('light-mode', 'dark-mode');
-                btn.textContent = currentLang === 'en' ? '☀️ Light Mode' : '☀️ Mode Clair';
+                iconSpan.textContent = '☀️';
+                textSpan.textContent = currentLang === 'en' ? 'Light' : 'Clair';
             } else {
                 body.classList.replace('dark-mode', 'light-mode');
-                btn.textContent = currentLang === 'en' ? '🌙 Dark Mode' : '🌙 Mode Sombre';
+                iconSpan.textContent = '🌙';
+                textSpan.textContent = currentLang === 'en' ? 'Dark' : 'Sombre';
             }
         }
 
-        // Toggle English / Simple French
         function toggleLanguage() {
             currentLang = currentLang === 'en' ? 'fr' : 'en';
             const langBtn = document.getElementById('lang-toggle');
             const themeBtn = document.getElementById('theme-toggle');
             const isDark = document.body.classList.contains('dark-mode');
 
-            // Update button labels
-            langBtn.textContent = currentLang === 'en' ? '🇫🇷 Français' : '🇬🇧 English';
-            themeBtn.textContent = isDark 
-                ? (currentLang === 'en' ? '☀️ Light Mode' : '☀️ Mode Clair')
-                : (currentLang === 'en' ? '🌙 Dark Mode' : '🌙 Mode Sombre');
+            langBtn.querySelector('.flag').textContent = currentLang === 'en' ? '🇫🇷' : '🇬🇧';
+            langBtn.querySelector('.btn-text').textContent = currentLang === 'en' ? 'Français' : 'English';
+            
+            themeBtn.querySelector('.btn-text').textContent = isDark 
+                ? (currentLang === 'en' ? 'Light' : 'Clair')
+                : (currentLang === 'en' ? 'Dark' : 'Sombre');
 
-            // Swap text on elements with data-en / data-fr
             document.querySelectorAll('[data-en]').forEach(el => {
                 el.textContent = el.getAttribute(`data-${currentLang}`);
             });
 
-            // Show/Hide French and English content blocks
             document.querySelectorAll('.lang-en').forEach(el => {
                 el.classList.toggle('hidden', currentLang === 'fr');
             });
             document.querySelectorAll('.lang-fr').forEach(el => {
                 el.classList.toggle('hidden', currentLang === 'en');
+            });
+        }
+
+        // Live Search & Filter for Common Drugs
+        function filterDrugs() {
+            const query = document.getElementById('drug-search').value.toLowerCase();
+            const cards = document.querySelectorAll('.drug-card');
+
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name').toLowerCase();
+                if (name.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterCategory(category, btnElement) {
+            document.querySelectorAll('.filter-pills .pill').forEach(p => p.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            const cards = document.querySelectorAll('.drug-card');
+            cards.forEach(card => {
+                const cat = card.getAttribute('data-category');
+                if (category === 'all' || cat === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
             });
         }
     </script>
